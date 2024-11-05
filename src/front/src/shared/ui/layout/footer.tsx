@@ -1,7 +1,7 @@
 import React from "react";
 
 export interface FooterProps {
-  contactForm?: React.ReactNode;
+  contactForm: React.ReactNode;
 }
 
 const Footer: React.FC<FooterProps> = ({ contactForm }) => {

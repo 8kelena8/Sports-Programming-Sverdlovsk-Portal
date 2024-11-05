@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Footer, Header } from "@/shared/ui/layout";
+import { ContactForm } from "@/features/contact";
+import { HeaderNavigation } from "@/features/search";
 
 const jetBrainsMono = JetBrains_Mono({
   subsets: ["latin"],
@@ -24,9 +26,9 @@ export default function RootLayout({
       <body
         className={`${jetBrainsMono.variable} antialiased font-jetBrainsMono`}
       >
-        <Header />
+        <Header nav={<HeaderNavigation />} />
         {children}
-        <Footer />
+        <Footer contactForm={<ContactForm />} />
       </body>
     </html>
   );
