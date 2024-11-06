@@ -4,6 +4,8 @@ import AboutSection from "./aboutSection";
 import DisciplinesSection from "./disciplinesSection";
 import AntiDopingSection from "./antiDopingSection";
 import NewsSection from "./newsSection";
+import PartnersSection from "./partnersSection";
+import FAQSection from "./faqSection";
 
 export interface HomePageProps {}
 
@@ -16,6 +18,8 @@ const HomePage: React.FC<HomePageProps> = ({}) => {
         <DisciplinesSection />
         <AntiDopingSection />
         <NewsSection />
+        <PartnersSection />
+        <FAQSection />
       </div>
     </>
   );
