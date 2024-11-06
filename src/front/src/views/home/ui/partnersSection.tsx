@@ -6,6 +6,11 @@ import { Partner } from "@/shared/types/partner";
 import { Button } from "@/shared/ui/button";
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import Image from "next/image";
+import { Swiper, SwiperSlide } from "swiper/react";
+
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
 
 const partners: Partner[] = [
   {
@@ -41,9 +46,8 @@ const partners: Partner[] = [
 ];
 
 const PartnersSection: React.FC = ({}) => {
-  const [page, setPage] = useState(1);
-  const perPage = 3;
-  const maxPage = Math.round(partners.length / perPage);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const [swiperRef, setSwiperRef] = useState<any>(null);
 
   return (
     <section className="space-y-12">
@@ -52,33 +56,32 @@ const PartnersSection: React.FC = ({}) => {
         <div className="h-[650px] max-w-[420px] p-5 text-center text-2xl font-bold bg-base-900 flex items-center">
           Познакомьтесь с нашими пациентами и спонсорами
         </div>
-        <div className="w-full space-y-5">
-          <div className="flex gap-5">
-            {partners.slice((page - 1) * 3, page * 3).map((p) => (
-              <Image
-                src="/img/partner.png"
-                alt={p.name}
-                width={385}
-                height={385}
-                className="object-contain"
-                key={p.id}
-              />
+        <div className="space-y-5 min-w-0">
+          <Swiper spaceBetween={25} slidesPerView={3} onSwiper={setSwiperRef}>
+            {partners.map((p) => (
+              <SwiperSlide className="" key={p.id}>
+                <Image
+                  src="/img/partner.png"
+                  alt={p.name}
+                  width={385}
+                  height={385}
+                  className="object-contain"
+                />
+              </SwiperSlide>
             ))}
-          </div>
+          </Swiper>
           <div className="flex gap-5 justify-center">
             <Button
               size="icon"
               variant="primary"
-              onClick={() => setPage((prev) => prev - 1)}
-              disabled={page < 2}
+              onClick={() => swiperRef.slidePrev()}
             >
               <ChevronLeftIcon />
             </Button>
             <Button
               size="icon"
               variant="primary"
-              onClick={() => setPage((prev) => prev + 1)}
-              disabled={page >= maxPage}
+              onClick={() => swiperRef.slideNext()}
             >
               <ChevronRightIcon />
             </Button>

@@ -6,6 +6,7 @@ import { Button } from "@/shared/ui/button";
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import { News } from "@/shared/types/news";
 import { NewsCard } from "@/entities/news";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 export interface NewsSectionProps {}
 
@@ -37,10 +38,20 @@ const news: News[] = [
     fullContent:
       "«Код мира»: в Севастополе завершились международные соревнования по спортивному программированию",
   },
+  {
+    id: 3,
+    title: "Новость 1",
+    publicationDate: "2022-04-12T17:09:34.000Z",
+    summary:
+      "«Код мира»: в Севастополе завершились международные соревнования по спортивному программированию",
+    fullContent:
+      "«Код мира»: в Севастополе завершились международные соревнования по спортивному программированию",
+  },
 ];
 
 const NewsSection: React.FC<NewsSectionProps> = ({}) => {
-  const [page, setPage] = useState(1);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const [swiperRef, setSwiperRef] = useState<any>(null);
 
   return (
     <section className="space-y-12">
@@ -50,25 +61,26 @@ const NewsSection: React.FC<NewsSectionProps> = ({}) => {
           <Button
             size="icon"
             variant="primary"
-            onClick={() => setPage((prev) => prev - 1)}
-            disabled={page < 2}
+            onClick={() => swiperRef.slidePrev()}
           >
             <ChevronLeftIcon />
           </Button>
           <Button
             size="icon"
             variant="primary"
-            onClick={() => setPage((prev) => prev + 1)}
+            onClick={() => swiperRef.slideNext()}
           >
             <ChevronRightIcon />
           </Button>
         </div>
       </div>
-      <div className="flex justify-between">
+      <Swiper spaceBetween={25} slidesPerView={3} onSwiper={setSwiperRef}>
         {news.map((n) => (
-          <NewsCard news={n} key={n.id} />
+          <SwiperSlide key={n.id}>
+            <NewsCard news={n} />
+          </SwiperSlide>
         ))}
-      </div>
+      </Swiper>
     </section>
   );
 };
