@@ -74,7 +74,12 @@ const NewsSection: React.FC<NewsSectionProps> = ({}) => {
           </Button>
         </div>
       </div>
-      <Swiper spaceBetween={25} slidesPerView={3} onSwiper={setSwiperRef}>
+      <Swiper
+        spaceBetween={25}
+        slidesPerView={1}
+        breakpoints={{ 991: { slidesPerView: 2 }, 1281: { slidesPerView: 3 } }}
+        onSwiper={setSwiperRef}
+      >
         {news.map((n) => (
           <SwiperSlide key={n.id}>
             <NewsCard news={n} />

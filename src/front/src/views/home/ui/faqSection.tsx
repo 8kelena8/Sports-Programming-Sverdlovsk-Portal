@@ -40,13 +40,13 @@ const FAQSection: React.FC = ({}) => {
   return (
     <section className="space-y-12">
       <SectionHeading title="Часто задаваемые вопросы" />
-      <div className="grid grid-cols-2">
+      <div className="grid grid-cols-2 max-xl:grid-cols-1 max-xl:gap-12">
         <div className="space-y-12">
-          <p className="font-bold text-4xl">
+          <p className="font-bold text-4xl max-xl:text-xl">
             Некоторые важные ответы на часто задаваемые вопросы
           </p>
           <p>Некоторые важные ответы на часто задаваемые вопросы</p>
-          <Button variant="primary" className="w-[400px] h-16">
+          <Button variant="primary" className="xl:w-[400px] w-full h-16">
             Задавать вопросы
           </Button>
         </div>

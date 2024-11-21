@@ -40,7 +40,7 @@ const Header: React.FC<HeaderProps> = ({ nav }) => {
           </DrawerTrigger>
           <DrawerContent className="pb-5">
             <DrawerHeader className="mb-10">
-              <DrawerTitle className="text-black">
+              <DrawerTitle className="text-black text-pretty text-center">
                 Федерация спортивного программирования Свердловской области
               </DrawerTitle>
             </DrawerHeader>

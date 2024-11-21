@@ -54,16 +54,18 @@ const news: News[] = [
 
 const HeroSection: React.FC<HeroSectionProps> = ({}) => {
   return (
-    <section className="grid grid-cols-2 h-[700px]">
+    <section className="grid grid-cols-2 xl:h-[700px] max-xl:grid-cols-1">
       <div className="bg-base-900 flex flex-col justify-center p-12 space-y-5">
-        <h1 className="font-bold text-5xl leading-[72px]">
+        <h1 className="font-bold text-5xl leading-[72px] max-xl:text-xl text-balance">
           Федерация спортивного программирования Свердловской области
         </h1>
-        <span className="text-xl">
+        <span className="text-xl max-xl:text-sm">
           Региональное отделение ФЕДЕРАЦИИ СПОРТИВНОГО ПРОГРАММИРОВАНИЯ
         </span>
       </div>
-      <NewsCarousel news={news} />
+      <div className="max-lg:h-96 max-xl:h-[600px] max-xl:order-first">
+        <NewsCarousel news={news} />
+      </div>
     </section>
   );
 };

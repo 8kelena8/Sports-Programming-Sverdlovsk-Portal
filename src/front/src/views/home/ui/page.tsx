@@ -13,7 +13,7 @@ const HomePage: React.FC<HomePageProps> = ({}) => {
   return (
     <>
       <HeroSection />
-      <div className="container mx-auto space-y-28 my-12">
+      <div className="container max-xl:px-5 mx-auto space-y-28 my-12">
         <AboutSection />
         <DisciplinesSection />
         <AntiDopingSection />

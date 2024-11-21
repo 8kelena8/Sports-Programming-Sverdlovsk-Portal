@@ -1,7 +1,12 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import SectionHeading from "./sectionHeading";
 import { Discipline } from "@/shared/types/discipline";
 import { DisciplineCard } from "@/entities/discipline";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Button } from "@/shared/ui/button";
+import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 
 export interface DisciplinesSectionProps {}
 
@@ -51,10 +56,40 @@ const disciplines: Discipline[] = [
 ];
 
 const DisciplinesSection: React.FC<DisciplinesSectionProps> = ({}) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const [swiperRef, setSwiperRef] = useState<any>(null);
+
   return (
     <section className="space-y-12">
-      <SectionHeading title="Дисциплины спортивного программирования" />
-      <div className="grid grid-cols-3 gap-20">
+      <div className="flex max-xl:flex-col items-end gap-5">
+        <SectionHeading title="Дисциплины спортивного программирования" />
+        <div className="flex gap-5 xl:hidden">
+          <Button
+            size="icon"
+            variant="primary"
+            onClick={() => swiperRef.slidePrev()}
+          >
+            <ChevronLeftIcon />
+          </Button>
+          <Button
+            size="icon"
+            variant="primary"
+            onClick={() => swiperRef.slideNext()}
+          >
+            <ChevronRightIcon />
+          </Button>
+        </div>
+      </div>
+      <div className="xl:hidden">
+        <Swiper spaceBetween={25} slidesPerView={1} onSwiper={setSwiperRef}>
+          {disciplines.map((d) => (
+            <SwiperSlide key={d.id}>
+              <DisciplineCard discipline={d} />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
+      <div className="grid grid-cols-3 gap-20 max-xl:hidden">
         {disciplines.map((d) => (
           <DisciplineCard discipline={d} key={d.id} />
         ))}

@@ -52,12 +52,20 @@ const PartnersSection: React.FC = ({}) => {
   return (
     <section className="space-y-12">
       <SectionHeading title="Партнёры и спонсоры" />
-      <div className="flex gap-5 items-center">
-        <div className="h-[650px] max-w-[420px] p-5 text-center text-2xl font-bold bg-base-900 flex items-center">
+      <div className="flex gap-5 items-center max-xl:flex-col">
+        <div className="xl:h-[650px] xl:max-w-[420px] max-xl:p-14 p-5 text-center text-2xl max-xl:text-lg font-bold bg-base-900 flex items-center">
           Познакомьтесь с нашими пациентами и спонсорами
         </div>
-        <div className="space-y-5 min-w-0">
-          <Swiper spaceBetween={25} slidesPerView={3} onSwiper={setSwiperRef}>
+        <div className="space-y-5 min-w-0 max-w-full">
+          <Swiper
+            spaceBetween={25}
+            slidesPerView={1}
+            breakpoints={{
+              991: { slidesPerView: 2 },
+              1281: { slidesPerView: 3 },
+            }}
+            onSwiper={setSwiperRef}
+          >
             {partners.map((p) => (
               <SwiperSlide className="" key={p.id}>
                 <Image
