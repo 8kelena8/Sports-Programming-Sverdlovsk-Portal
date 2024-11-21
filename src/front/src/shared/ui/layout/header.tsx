@@ -1,6 +1,16 @@
 import Image from "next/image";
 import React from "react";
 import Link from "next/link";
+import {
+  Drawer,
+  DrawerContent,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "../drawer";
+import { Button } from "../button";
+import { MenuIcon } from "lucide-react";
 
 export interface HeaderProps {
   nav?: React.ReactNode;
@@ -23,7 +33,20 @@ const Header: React.FC<HeaderProps> = ({ nav }) => {
             программирования Свердловской области
           </span>
         </Link>
-        {nav}
+        <div className="max-xl:hidden">{nav}</div>
+        <Drawer>
+          <DrawerTrigger className="xl:hidden">
+            <MenuIcon />
+          </DrawerTrigger>
+          <DrawerContent className="pb-5">
+            <DrawerHeader className="mb-10">
+              <DrawerTitle className="text-black">
+                Федерация спортивного программирования Свердловской области
+              </DrawerTitle>
+            </DrawerHeader>
+            {nav}
+          </DrawerContent>
+        </Drawer>
       </div>
     </header>
   );

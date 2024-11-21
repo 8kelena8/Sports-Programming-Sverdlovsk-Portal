@@ -22,13 +22,15 @@ const Navigation: React.FC<NavigationProps> = ({ className }) => {
 
   return (
     <nav className={className}>
-      <ol className="list-none flex gap-5">
+      <ol className="list-none flex max-xl:flex-col gap-5">
         {routes.map((r) => (
           <li key={r.path}>
             <Link
               href={r.path}
-              className={cn("font-bold", {
-                "text-primary": pathname.includes(r.path),
+              className={cn("font-bold max-xl:text-black", {
+                "!text-primary":
+                  (pathname === r.path && r.path === "/") ||
+                  (pathname.includes(r.path) && r.path !== "/"),
               })}
             >
               {r.title}
