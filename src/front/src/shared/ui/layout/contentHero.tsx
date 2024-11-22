@@ -19,7 +19,7 @@ export interface ContentHeroProps {
 
 const ContentHero: React.FC<ContentHeroProps> = ({ title, breadcrumbs }) => {
   return (
-    <div className="w-full bg-base-900 flex flex-col items-center gap-5 p-5">
+    <div className="w-full bg-base-900 flex flex-col items-center gap-5 p-10">
       <h1 className="text-4xl font-bold uppercase">{title}</h1>
       <Breadcrumb>
         <BreadcrumbList>
