@@ -66,7 +66,7 @@ export interface NewsIdPageProps {
 
 const NewsIdPage: React.FC<NewsIdPageProps> = ({ id }) => {
   return (
-    <div className="container mx-auto flex max-xl:flex-col gap-10 my-12">
+    <div className="container mx-auto flex max-xl:flex-col gap-10 my-12 px-5">
       <main className="space-y-10">
         <div className="w-full">
           <Image
@@ -74,11 +74,11 @@ const NewsIdPage: React.FC<NewsIdPageProps> = ({ id }) => {
             src="/img/news.png"
             width={984}
             height={700}
-            className="aspect-square"
+            className="aspect-square object-contain"
           />
         </div>
-        <h1 className="font-bold text-4xl">Новость {id}</h1>
-        <div className="text-xl">
+        <h1 className="font-bold text-4xl max-xl:text-2xl">Новость {id + 1}</h1>
+        <div className="xl:text-xl break-words">
           Sadipscing labore amet rebum est et justo gubergren. Et eirmod ipsum
           sit diam ut magna lorem. Nonumy vero labore lorem sanctus rebum et
           lorem magna kasd, stet amet magna accusam consetetur eirmod. Kasd
@@ -114,8 +114,8 @@ const NewsIdPage: React.FC<NewsIdPageProps> = ({ id }) => {
           Dolor erat justo dolore sit invidunt.
         </div>
       </main>
-      <section className="bg-base-900 p-10 space-y-10 min-w-[500px] h-fit">
-        <h2 className="font-bold text-2xl">Последние новости</h2>
+      <section className="bg-base-900 p-10 space-y-10 xl:min-w-[500px] h-fit max-xl:p-5">
+        <h2 className="font-bold text-2xl max-xl:text-xl">Последние новости</h2>
         {lastNews.map((n) => (
           <MiniNewsCard news={n} key={n.id} />
         ))}
