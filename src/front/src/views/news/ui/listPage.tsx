@@ -131,8 +131,11 @@ const ListNewsPage: React.FC<ListNewsPageProps> = ({}) => {
             ))}
           </main>
           <div className="">
-            <Button variant="primary" className="block mx-auto px-12">
-              ПОКАЗАТЬ ВСЕ НОВОСТИ
+            <Button
+              variant="primary"
+              className="block mx-auto px-12 max-lg:w-full"
+            >
+              ПОКАЗАТЬ ЕЩЁ
             </Button>
           </div>
         </section>
