@@ -15,7 +15,7 @@ const ContactsPage: React.FC<ContactsPageProps> = ({}) => {
 
   return (
     <>
-      <ContentHero title="События" breadcrumbs={breadcrumbs} />
+      <ContentHero title="Контакты" breadcrumbs={breadcrumbs} />
       <div className="container mx-auto my-12 space-y-12 px-5">
         <section className="xl:bg-base-900 grid xl:grid-cols-2 xl:rounded-r max-xl:gap-12">
           <FeedbackForm className="p-12 max-xl:bg-base-900 max-xl:rounded" />
