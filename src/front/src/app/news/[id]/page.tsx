@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 export default async function Page({
   params,
 }: Readonly<{
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }>) {
   const { id } = await params;
   const idNumber = parseInt(id);
