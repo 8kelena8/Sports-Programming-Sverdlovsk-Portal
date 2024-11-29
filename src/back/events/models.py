@@ -1,18 +1,21 @@
 from django.db import models
+from django.contrib.auth.models import User
 
-class User(models.Model):
-    ROLE_CHOICES = [
-        ('admin', 'Admin'),
-        ('user', 'User'),
-        ('guest', 'Guest'),
-    ]
-    username = models.CharField(max_length=100)
-    email = models.EmailField()
-    password = models.CharField(max_length=100)
-    role = models.CharField(max_length=10, choices=ROLE_CHOICES)
+# class User(models.Model):
+#     ROLE_CHOICES = [
+#         ('admin', 'Admin'),
+#         ('user', 'User'),
+#         ('guest', 'Guest'),
+#     ]
+#     username = models.CharField(max_length=100)
+#     email = models.EmailField()
+#     password = models.CharField(max_length=100)
+#     role = models.CharField(max_length=10, choices=ROLE_CHOICES)
 
-    def __str__(self):
-        return self.username
+#     USERNAME_FIELD = 'username' 
+
+#     def __str__(self):
+#         return self.username
 
 class Category(models.Model):
     name = models.CharField(max_length=100)
@@ -28,6 +31,7 @@ class Discipline(models.Model):
     def __str__(self):
         return self.name
 
+
 class Event(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField(blank=True, null=True)
@@ -41,6 +45,7 @@ class Event(models.Model):
     def __str__(self):
         return self.title
 
+
 class Calendar(models.Model):
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
     date = models.DateField()
@@ -48,6 +53,7 @@ class Calendar(models.Model):
 
     def __str__(self):
         return f"{self.event.title} - {self.date}"
+
 
 class Contact(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
@@ -60,6 +66,7 @@ class Contact(models.Model):
     def __str__(self):
         return self.subject or "Contact Inquiry"
 
+
 class News(models.Model):
     title = models.CharField(max_length=150)
     summary = models.TextField(blank=True, null=True)
@@ -69,6 +76,7 @@ class News(models.Model):
     def __str__(self):
         return self.title
 
+
 class Partner(models.Model):
     name = models.CharField(max_length=100)
     logo = models.ImageField(upload_to='partners/', blank=True, null=True)
@@ -76,6 +84,13 @@ class Partner(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Participation(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank=False)
+    event = models.ForeignKey(Event, on_delete=models.CASCADE, null= False, blank=False)
+    result = models.CharField(max_length=100)
+
 
 class Document(models.Model):
     title = models.CharField(max_length=150)
