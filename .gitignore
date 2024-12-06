@@ -1,0 +1,6 @@
+*.pyc 
+__pycache__/ 
+src/back/env 
+media/ 
+staticfiles/ 
+src/front
