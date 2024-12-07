@@ -2,10 +2,10 @@ services:
   db:
     image: mysql:5.7
     environment:
-      MYSQL_ROOT_PASSWORD: tree123  # Replace with a secure password
-      MYSQL_DATABASE: eventmanagement       # Your database name
-      MYSQL_USER: eventuser                 # Your MySQL username
-      MYSQL_PASSWORD: eventpassword         # Your MySQL user password
+      MYSQL_ROOT_PASSWORD: tree123  
+      MYSQL_DATABASE: eventmanagement       
+      MYSQL_USER: eventuser                 
+      MYSQL_PASSWORD: eventpassword        
     ports:
       - "3306:3306"  # Map the MySQL port
     volumes:
