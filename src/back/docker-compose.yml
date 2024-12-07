@@ -1,0 +1,33 @@
+services:
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: tree123  # Replace with a secure password
+      MYSQL_DATABASE: eventmanagement       # Your database name
+      MYSQL_USER: eventuser                 # Your MySQL username
+      MYSQL_PASSWORD: eventpassword         # Your MySQL user password
+    ports:
+      - "3306:3306"  # Map the MySQL port
+    volumes:
+      - mysql_data:/var/lib/mysql  # Persist MySQL data
+    networks:
+      - app_network
+
+  web:
+    build: .
+    command: sh -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    networks:
+      - app_network
+
+volumes:
+  mysql_data:
+
+networks:
+  app_network:
+    driver: bridge
