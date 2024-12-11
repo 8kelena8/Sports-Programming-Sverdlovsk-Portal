@@ -1,0 +1,58 @@
+version: "3.8"
+
+services:
+  backend:
+    build:
+      context: ./back # Path to the backend directory
+      dockerfile: Dockerfile
+    container_name: backend
+    # command: python manage.py runserver 0.0.0.0:8000
+    command:
+      [
+        "sh",
+        "-c",
+        "python manage.py migrate && python manage.py runserver 0.0.0.0:8000",
+      ]
+
+    volumes:
+      - ./back:/app # Bind mount your Django app
+      - static_volume:/app/static # Persistent volume for static files
+    ports:
+      - "8000:8000"
+    # env_file:
+    #   - ./back/.env # Environment variables for the backend
+    depends_on:
+      - db
+
+  frontend:
+    build:
+      context: ./front # Path to the frontend directory
+      dockerfile: Dockerfile
+    container_name: frontend
+    ports:
+      - "3001:3000"
+    environment:
+      - NODE_ENV=development
+    volumes:
+      - ./front:/app # Bind mount your React app
+      - /app/node_modules
+    stdin_open: true
+    tty: true
+
+  db:
+    image: mysql:8.0
+    container_name: db
+    restart: always
+    environment:
+      MYSQL_DATABASE: eventmanagement
+      MYSQL_USER: root
+      MYSQL_PASSWORD: tree123
+      MYSQL_ROOT_PASSWORD: tree123
+    volumes:
+      - db_data:/var/lib/mysql
+    ports:
+      - "3307:3306"
+
+volumes:
+  static_volume:
+  db_data:

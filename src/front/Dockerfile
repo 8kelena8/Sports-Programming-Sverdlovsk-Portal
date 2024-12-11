@@ -1,9 +1,9 @@
 FROM node:18-alpine AS base
 FROM base AS deps
 RUN echo https://mirror.yandex.ru/mirrors/alpine/v3.16/main > /etc/apk/repositories; \
-    echo https://mirror.yandex.ru/mirrors/alpine/v3.16/community >> /etc/apk/repositories \
-    echo https://mirror.yandex.ru/mirrors/alpine/v3.16/releases >> /etc/apk/repositories \
-RUN apk add --no-cache libc6-compat
+  echo https://mirror.yandex.ru/mirrors/alpine/v3.16/community >> /etc/apk/repositories \
+  echo https://mirror.yandex.ru/mirrors/alpine/v3.16/releases >> /etc/apk/repositories \
+  RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
 # RUN npm install --global pm2
@@ -21,7 +21,7 @@ RUN \
 FROM base AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
-COPY .env.* ./
+# COPY .env.* ./
 COPY tsconfig.json ./
 COPY . .
 
@@ -48,7 +48,7 @@ RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 
 COPY --from=builder /app/public ./public
-COPY --from=builder /app/.env.* ./
+# COPY --from=builder /app/.env.* ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 

@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 
 
+import os
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
@@ -22,8 +23,8 @@ SECRET_KEY = 'django-insecure-(wfp0r+%l$jyqci*!d$2kok=5^gu=3eakgqq_*5qubh$&shl1$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+# ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', 'django_backend', '127.0.0.1']
 
 # Application definition
 
@@ -53,10 +54,15 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
 ]
 
+# CORS_ALLOWED_ORIGINS = [
+#     "http://localhost:3000",  # Example: React frontend on localhost
+#     "https://myfrontend.com",
+# ]
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",  # Example: React frontend on localhost
-    "https://myfrontend.com",
+    "http://localhost:3000",  # Local React frontend
+    "http://react_frontend:3000",  # React frontend in Docker
 ]
+
 
 ROOT_URLCONF = 'EventManagement.urls'
 
@@ -82,15 +88,27 @@ WSGI_APPLICATION = 'EventManagement.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+# Development environment database setting
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'eventmanagement',  # Your MySQL database name
+#         'USER': 'root',          # MySQL username
+#         'PASSWORD': 'tree123',  # MySQL password for eventuser
+#         'HOST': 'localhost',          # Hostname
+#         'PORT': '3306',               # MySQL default port
+#     }
+# }
+
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'eventmanagement',  # Your MySQL database name
-        'USER': 'root',          # MySQL username
-        'PASSWORD': 'tree123',  # MySQL password for eventuser
-        'HOST': 'localhost',          # Hostname
-        'PORT': '3306',               # MySQL default port
+        'NAME': os.getenv('MYSQL_DATABASE', 'eventmanagement'),
+        'USER': os.getenv('MYSQL_USER', 'root'),
+        'PASSWORD': os.getenv('MYSQL_PASSWORD', 'tree123'),
+        'HOST': os.getenv('MYSQL_HOST', 'db'),  # Service name in docker-compose
+        'PORT': os.getenv('MYSQL_PORT', '3306'),
     }
 }
 
@@ -129,9 +147,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
+# STATIC_URL = 'static/'
+# STATIC_ROOT = 'static/'
 
-STATIC_ROOT = 'static/'
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field

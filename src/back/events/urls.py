@@ -29,9 +29,4 @@ urlpatterns = [
     path('news-detail/<int:pk>/', NewsDetail.as_view(), name='news-detail'),
     path('partner-detail/<int:pk>/', PartnerDetail.as_view(), name='partner-detail'),
 
-    path('signup/', signup_view, name='signup'),
-    path('login/', login_view, name='login'),
-    path('logout/', logout_view, name='logout'),
-    path('activate/<int:user_id>/', activate_view, name='activate'),
-
 ]
