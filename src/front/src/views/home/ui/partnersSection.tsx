@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import SectionHeading from "./sectionHeading";
+import SectionHeading from "@/shared/ui/sectionHeading";
 import { Partner } from "@/shared/types/partner";
 import { Button } from "@/shared/ui/button";
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";

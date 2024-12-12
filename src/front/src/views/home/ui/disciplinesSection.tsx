@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import SectionHeading from "./sectionHeading";
+import SectionHeading from "@/shared/ui/sectionHeading";
 import { Discipline } from "@/shared/types/discipline";
 import { DisciplineCard } from "@/entities/discipline";
 import { Swiper, SwiperSlide } from "swiper/react";

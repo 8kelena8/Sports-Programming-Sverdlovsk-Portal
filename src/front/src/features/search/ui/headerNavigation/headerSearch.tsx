@@ -27,21 +27,6 @@ const HeaderSearch: React.FC<SearchProps> = ({ onCollapse }) => {
     }
   };
 
-  const searchButton = (
-    <Button
-      size="icon"
-      variant="primary"
-      className={cn({ "size-6": !collapsed })}
-      onClick={onSearchClick}
-    >
-      <SearchIcon />
-    </Button>
-  );
-
-  // if (collapsed) {
-  //   return searchButton;
-  // }
-
   return (
     <div className="group" data-collapse={collapsed}>
       <Button

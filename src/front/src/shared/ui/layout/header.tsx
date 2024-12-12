@@ -4,12 +4,10 @@ import Link from "next/link";
 import {
   Drawer,
   DrawerContent,
-  DrawerFooter,
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
 } from "../drawer";
-import { Button } from "../button";
 import { MenuIcon } from "lucide-react";
 
 export interface HeaderProps {
