@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import SectionHeading from "./sectionHeading";
+import SectionHeading from "@/shared/ui/sectionHeading";
 import { Separator } from "@/shared/ui/separator";
 
 export interface AboutSectionProps {}

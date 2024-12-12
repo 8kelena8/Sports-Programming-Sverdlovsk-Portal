@@ -1,5 +1,5 @@
 import React from "react";
-import SectionHeading from "./sectionHeading";
+import SectionHeading from "@/shared/ui/sectionHeading";
 import Image from "next/image";
 import { Button } from "@/shared/ui/button";
 import Link from "next/link";

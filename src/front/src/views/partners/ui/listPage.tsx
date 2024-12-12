@@ -81,7 +81,7 @@ const PartnersListPage: React.FC<PartnersListPageProps> = ({}) => {
           .map((p) => <PartnerCard key={p.id} partner={p} />)
           .flatMap((v, i) => [v, <Separator key={`slash_${i}`} />])}
         <Button variant="primary" className="block mx-auto">
-          Показать ещё новости
+          Показать ещё
         </Button>
       </section>
       <section className="container mx-auto my-20 bg-base-900 lg:p-16 max-lg:py-10 px-2 flex items-center gap-16 max-lg:gap-2">

@@ -1,5 +1,5 @@
 import React from "react";
-import SectionHeading from "./sectionHeading";
+import SectionHeading from "@/shared/ui/sectionHeading";
 import { Button } from "@/shared/ui/button";
 import {
   Accordion,
