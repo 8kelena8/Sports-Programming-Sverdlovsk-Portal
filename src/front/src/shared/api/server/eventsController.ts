@@ -6,9 +6,10 @@ const getAllEvents = async () => {
   const response = await fetch(
     new URL("/event-list", process.env.SERVER_API_URL),
     {
-      next: {
-        revalidate: parseInt(process.env.SERVER_FETCH_REVALIDATION_SECONDS!),
-      },
+      cache: "no-cache",
+      // next: {
+      //   revalidate: parseInt(process.env.SERVER_FETCH_REVALIDATION_SECONDS!),
+      // },
     }
   );
   const json: ListAPI<EventAPI> = await response.json();
@@ -33,9 +34,10 @@ const getEventById = async (eventId: Event["id"]) => {
   const response = await fetch(
     new URL(`/event-detail/${eventId}`, process.env.SERVER_API_URL),
     {
-      next: {
-        revalidate: parseInt(process.env.SERVER_FETCH_REVALIDATION_SECONDS!),
-      },
+      cache: "no-cache",
+      // next: {
+      //   revalidate: parseInt(process.env.SERVER_FETCH_REVALIDATION_SECONDS!),
+      // },
     }
   );
   const json: EventAPI = await response.json();

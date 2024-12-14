@@ -6,9 +6,10 @@ const getAllDisciplines = async () => {
   const response = await fetch(
     new URL("/discipline-list", process.env.SERVER_API_URL),
     {
-      next: {
-        revalidate: parseInt(process.env.SERVER_FETCH_REVALIDATION_SECONDS!),
-      },
+      cache: "no-cache",
+      // next: {
+      //   revalidate: parseInt(process.env.SERVER_FETCH_REVALIDATION_SECONDS!),
+      // },
     }
   );
   const json: ListAPI<DisciplineAPI> = await response.json();

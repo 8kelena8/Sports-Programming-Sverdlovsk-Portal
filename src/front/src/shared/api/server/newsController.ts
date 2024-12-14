@@ -6,9 +6,10 @@ const getAllNews = async () => {
   const response = await fetch(
     new URL("/news-list", process.env.SERVER_API_URL),
     {
-      next: {
-        revalidate: parseInt(process.env.SERVER_FETCH_REVALIDATION_SECONDS!),
-      },
+      cache: "no-cache",
+      // next: {
+      //   revalidate: parseInt(process.env.SERVER_FETCH_REVALIDATION_SECONDS!),
+      // },
     }
   );
   const json: ListAPI<NewsAPI> = await response.json();
@@ -31,9 +32,10 @@ const getNewsById = async (id: News["id"]) => {
   const response = await fetch(
     new URL(`/news-detail/${id}`, process.env.SERVER_API_URL),
     {
-      next: {
-        revalidate: parseInt(process.env.SERVER_FETCH_REVALIDATION_SECONDS!),
-      },
+      cache: "no-cache",
+      // next: {
+      //   revalidate: parseInt(process.env.SERVER_FETCH_REVALIDATION_SECONDS!),
+      // },
     }
   );
   const json: NewsAPI = await response.json();
