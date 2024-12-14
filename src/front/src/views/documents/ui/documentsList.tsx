@@ -8,16 +8,20 @@ import React, { useState } from "react";
 
 export interface DocumentsListProps {
   documents: Document[];
+  categories: string[];
 }
 
-const DocumentsList: React.FC<DocumentsListProps> = ({ documents }) => {
+const DocumentsList: React.FC<DocumentsListProps> = ({
+  documents,
+  categories,
+}) => {
   const [category, setCategory] = useState("Все");
-  const categories = ["Все", ...new Set(documents.map((d) => d.category))];
+  const extendedCategories = ["Все", ...categories];
 
   return (
     <section className="space-y-12">
       <div className="flex gap-5 overflow-x-auto">
-        {categories.map((c) => (
+        {extendedCategories.map((c) => (
           <Button
             variant="primary"
             onClick={() => setCategory(c)}
