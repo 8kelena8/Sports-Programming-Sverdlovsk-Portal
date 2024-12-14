@@ -16,7 +16,7 @@ const PartnerCard: React.FC<PartnerCardProps> = ({ partner }) => {
   return (
     <div className="grid gap-5 grid-cols-[auto_1fr_auto]">
       <Image
-        src="/img/partner.png"
+        src={partner.logo ?? "/img/placeholder.jpg"}
         alt={partner.name}
         width={400}
         height={400}
