@@ -29,6 +29,7 @@ const FeedbackForm: React.FC<FeedbackFormProps> = ({ className }) => {
             id="feedbackEmail"
             className="ring-0 outline-none w-full rounded bg-white text-black p-2"
             placeholder="Ваш адрес электронной почты"
+            required
           />
         </label>
         <label htmlFor="feedbackTitle" className="block">
@@ -39,6 +40,7 @@ const FeedbackForm: React.FC<FeedbackFormProps> = ({ className }) => {
             id="feedbackTitle"
             className="ring-0 outline-none w-full rounded bg-white text-black p-2"
             placeholder="Заголовок обращения"
+            required
           />
         </label>
         <label htmlFor="feedbackText" className="block">
@@ -48,13 +50,14 @@ const FeedbackForm: React.FC<FeedbackFormProps> = ({ className }) => {
             id="feedbackText"
             className="ring-0 outline-none w-full rounded bg-white text-black p-2 min-h-36"
             placeholder="Текст обращения"
+            required
           />
         </label>
         <Button type="submit" variant="primary" className="w-full">
           Отправить
         </Button>
         <label htmlFor="feedback_agree" className="flex items-center space-x-2">
-          <Checkbox id="feedback_agree" name="agree" />
+          <Checkbox id="feedback_agree" name="agree" required />
           <span className="text-sm">
             Отправляя форму, вы даёте согласие на обработку персональных данных
           </span>
