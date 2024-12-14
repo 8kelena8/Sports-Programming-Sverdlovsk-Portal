@@ -1,12 +1,12 @@
 import React from "react";
 import SectionHeading from "@/shared/ui/sectionHeading";
-import { Button } from "@/shared/ui/button";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/shared/ui/accordion";
+import { FAQAskButton } from "@/features/order";
 
 const faqs = [
   {
@@ -46,9 +46,7 @@ const FAQSection: React.FC = ({}) => {
             Некоторые важные ответы на часто задаваемые вопросы
           </p>
           <p>Некоторые важные ответы на часто задаваемые вопросы</p>
-          <Button variant="primary" className="xl:w-[400px] w-full h-16">
-            Задавать вопросы
-          </Button>
+          <FAQAskButton />
         </div>
 
         <div className="">

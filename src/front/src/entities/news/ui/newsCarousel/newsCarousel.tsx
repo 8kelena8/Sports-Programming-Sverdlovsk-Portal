@@ -37,10 +37,10 @@ const NewsCarousel: React.FC<NewsCarouselProps> = ({ news }) => {
     <div className="w-full h-full relative">
       <Swiper className="w-full h-full" onSwiper={setSwiperRef}>
         {news.map((n) => (
-          <SwiperSlide key={n.id}>
+          <SwiperSlide key={n.title}>
             <Image
               alt={currentNews.title}
-              src={"/img/news2.png"}
+              src={"/img/placeholder.jpg"}
               fill
               sizes="(min-width: 960px) 50vw, 100vw"
               className="object-cover"

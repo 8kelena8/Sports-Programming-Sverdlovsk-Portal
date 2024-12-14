@@ -16,28 +16,48 @@ const FeedbackForm: React.FC<FeedbackFormProps> = ({ className }) => {
 
   return (
     <div className={cn("space-y-5 flex flex-col justify-center", className)}>
-      <p className="text-2xl">Напишите нам</p>
-      <p className="text-2xl">мы свяжемся с вами</p>
+      <div className="">
+        <p className="text-2xl">Напишите нам</p>
+        <p className="text-2xl">мы свяжемся с вами</p>
+      </div>
       <form onSubmit={onSubmit} className="space-y-5">
-        <input
-          type="email"
-          name="email"
-          className="ring-0 outline-none w-full rounded bg-white text-black p-2"
-        />
-        <input
-          type="text"
-          name="title"
-          className="ring-0 outline-none w-full rounded bg-white text-black p-2"
-        />
-        <textarea
-          name="question"
-          className="ring-0 outline-none w-full rounded bg-white text-black p-2 min-h-36"
-        />
+        <label htmlFor="feedbackEmail" className="block">
+          <span>Email</span>
+          <input
+            type="email"
+            name="email"
+            id="feedbackEmail"
+            className="ring-0 outline-none w-full rounded bg-white text-black p-2"
+            placeholder="Ваш адрес электронной почты"
+            required
+          />
+        </label>
+        <label htmlFor="feedbackTitle" className="block">
+          <span>Заголовок</span>
+          <input
+            type="text"
+            name="title"
+            id="feedbackTitle"
+            className="ring-0 outline-none w-full rounded bg-white text-black p-2"
+            placeholder="Заголовок обращения"
+            required
+          />
+        </label>
+        <label htmlFor="feedbackText" className="block">
+          <span>Сообщение</span>
+          <textarea
+            name="question"
+            id="feedbackText"
+            className="ring-0 outline-none w-full rounded bg-white text-black p-2 min-h-36"
+            placeholder="Текст обращения"
+            required
+          />
+        </label>
         <Button type="submit" variant="primary" className="w-full">
           Отправить
         </Button>
         <label htmlFor="feedback_agree" className="flex items-center space-x-2">
-          <Checkbox id="feedback_agree" name="agree" />
+          <Checkbox id="feedback_agree" name="agree" required />
           <span className="text-sm">
             Отправляя форму, вы даёте согласие на обработку персональных данных
           </span>

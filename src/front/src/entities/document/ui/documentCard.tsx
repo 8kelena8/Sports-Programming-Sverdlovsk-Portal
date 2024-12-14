@@ -12,9 +12,9 @@ const DocumentCard: React.FC<DocumentCardProps> = ({ document }) => {
     <div className="p-5 space-y-5 bg-white text-black">
       <FileTextIcon size={50} strokeWidth={1} />
       <h3 className="font-bold xl:text-2xl uppercase">{document.title}</h3>
-      <p>краткое описание краткое описание краткое описание краткое описание</p>
+      <p></p>
       <div className="">
-        <a href={document.file_link} target="_blank">
+        <a href={document.fileLink} target="_blank">
           <Button variant="primary">Просмотреть</Button>
         </a>
       </div>

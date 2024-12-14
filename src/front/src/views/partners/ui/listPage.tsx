@@ -1,72 +1,16 @@
 import { PartnerCard } from "@/entities/partners";
-import { Partner } from "@/shared/types/partner";
+import { serverPartnersController } from "@/shared/api/server";
 import { Button } from "@/shared/ui/button";
 import { ContentHero } from "@/shared/ui/layout";
 import { Separator } from "@/shared/ui/separator";
 import Image from "next/image";
 import React from "react";
 
-const partners: Partner[] = [
-  {
-    id: 1,
-    logo: "",
-    name: "Партнер 1",
-    promotionalContent: "Описание партнера 1",
-  },
-  {
-    id: 2,
-    logo: "",
-    name: "Партнер 2",
-    promotionalContent:
-      "Следует отметить, что дальнейшее развитие различных форм деятельности, в своём классическом представлении. Следует отметить, что дальнейшее развитие различных форм деятельности, в своём классическом представлении.",
-  },
-  {
-    id: 3,
-    logo: "",
-    name: "Партнер 3",
-    promotionalContent: "Описание партнера 1",
-  },
-  {
-    id: 4,
-    logo: "",
-    name: "Партнер 4",
-    promotionalContent: "Описание партнера 1",
-  },
-  {
-    id: 5,
-    logo: "",
-    name: "Партнер 5",
-    promotionalContent: "Описание партнера 1",
-  },
-  {
-    id: 6,
-    logo: "",
-    name: "Партнер 6",
-    promotionalContent: "Описание партнера 1",
-  },
-  {
-    id: 7,
-    logo: "",
-    name: "Партнер 7",
-    promotionalContent: "Описание партнера 1",
-  },
-  {
-    id: 8,
-    logo: "",
-    name: "Партнер 8",
-    promotionalContent: "Описание партнера 1",
-  },
-  {
-    id: 9,
-    logo: "",
-    name: "Партнер 9",
-    promotionalContent: "Описание партнера 1",
-  },
-];
-
 export interface PartnersListPageProps {}
 
-const PartnersListPage: React.FC<PartnersListPageProps> = ({}) => {
+const PartnersListPage: React.FC<PartnersListPageProps> = async ({}) => {
+  const partners = await serverPartnersController.getAllPartners();
+
   const breadcrumbs = [
     { title: "Главная", link: "/" },
     { title: "Наши Партнеры", link: "/partners" },
@@ -78,7 +22,7 @@ const PartnersListPage: React.FC<PartnersListPageProps> = ({}) => {
       <section className="container mx-auto my-12 space-y-8 px-5">
         <Separator />
         {partners
-          .map((p) => <PartnerCard key={p.id} partner={p} />)
+          .map((p) => <PartnerCard key={p.name} partner={p} />)
           .flatMap((v, i) => [v, <Separator key={`slash_${i}`} />])}
         <Button variant="primary" className="block mx-auto">
           Показать ещё
@@ -106,4 +50,4 @@ const PartnersListPage: React.FC<PartnersListPageProps> = ({}) => {
   );
 };
 
-export default React.memo(PartnersListPage);
+export default PartnersListPage;
