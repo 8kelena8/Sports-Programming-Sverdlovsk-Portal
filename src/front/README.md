@@ -11,8 +11,8 @@ npm run dev
 
 ### Для запуска в docker контейнере (For start in docker container)
 
-Заполните файл env-example и переименуйте его в .env.local
-Fill env-example file and rename it to .env.local
+Заполните файл example.env и переименуйте его в .env.local
+Fill example.env file and rename it to .env.local
 
 ```bash
 docker build --tag 'fsp-front' .
