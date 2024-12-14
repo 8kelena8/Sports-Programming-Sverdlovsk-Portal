@@ -21,8 +21,15 @@ services:
       - "8000:8000"
     # env_file:
     #   - ./back/.env # Environment variables for the backend
+    environment:
+      - MYSQL_DATABASE=eventmanagement
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=tree123
+      - MYSQL_HOST=db
+      - MYSQL_PORT=3306
     depends_on:
-      - db
+      db:
+        condition: service_started
 
   frontend:
     build:
@@ -30,24 +37,16 @@ services:
       dockerfile: Dockerfile
     container_name: frontend
     ports:
-      - "3001:3000"
-    environment:
-      - NODE_ENV=development
-    volumes:
-      - ./front:/app # Bind mount your React app
-      - /app/node_modules
-    stdin_open: true
-    tty: true
+      - "3000:3000"
 
   db:
     image: mysql:8.0
     container_name: db
     restart: always
     environment:
-      MYSQL_DATABASE: eventmanagement
-      MYSQL_USER: root
-      MYSQL_PASSWORD: tree123
-      MYSQL_ROOT_PASSWORD: tree123
+      - MYSQL_DATABASE=eventmanagement
+      - MYSQL_PASSWORD=tree123
+      - MYSQL_ROOT_PASSWORD=tree123
     volumes:
       - db_data:/var/lib/mysql
     ports:

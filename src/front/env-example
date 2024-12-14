@@ -1,0 +1,7 @@
+# RENAME THIS FILE TO .env.local
+
+# API URL to use on server (not in client browser)
+# SERVER_API_URL=http://host:port
+SERVER_API_URL=
+
+# NEXT_PUBLIC_API_URL=https://
