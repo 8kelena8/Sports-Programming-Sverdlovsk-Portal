@@ -1,13 +1,9 @@
-"use client";
-
-import { DocumentCard } from "@/entities/document";
 import { LastNews } from "@/entities/news";
-import { cn } from "@/shared/lib/utils";
 import { Document } from "@/shared/types/document";
-import { Button } from "@/shared/ui/button";
 import { ContentHero } from "@/shared/ui/layout";
 import SectionHeading from "@/shared/ui/sectionHeading";
-import React, { useState } from "react";
+import React from "react";
+import DocumentsList from "./documentsList";
 
 const documentItems: Document[] = [
   {
@@ -57,43 +53,16 @@ const documentItems: Document[] = [
 export interface DocumentsListPageProps {}
 
 const DocumentsListPage: React.FC<DocumentsListPageProps> = ({}) => {
-  const [category, setCategory] = useState("Все");
-
   const breadcrumbs = [
     { title: "Главная", link: "/" },
     { title: "Документы", link: "/documents" },
   ];
 
-  const categories = ["Все", ...new Set(documentItems.map((d) => d.category))];
-
   return (
     <>
       <ContentHero title="Документы" breadcrumbs={breadcrumbs} />
       <div className="container mx-auto my-12 space-y-12 px-5">
-        <section className="space-y-12">
-          <div className="flex gap-5 overflow-x-auto">
-            {categories.map((c) => (
-              <Button
-                variant="primary"
-                onClick={() => setCategory(c)}
-                className={cn({ "bg-white text-primary": c === category })}
-                key={c}
-              >
-                {c}
-              </Button>
-            ))}
-          </div>
-          <div className="grid grid-cols-3 gap-5 max-lg:grid-cols-1">
-            {documentItems
-              .filter((d) => category === "Все" || d.category === category)
-              .map((d) => (
-                <DocumentCard document={d} key={d.id} />
-              ))}
-          </div>
-          <Button variant="primary" className="block mx-auto">
-            Показать ещё
-          </Button>
-        </section>
+        <DocumentsList documents={documentItems} />
 
         <section className="space-y-12">
           <SectionHeading title="Последние новости" />
