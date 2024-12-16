@@ -22,7 +22,7 @@ const DocumentsList: React.FC<DocumentsListProps> = ({
   );
 
   const [page, setPage] = useState(1);
-  const perPageItems = 1;
+  const perPageItems = 6;
   const totalPages = Math.ceil(categoryDocuments.length / perPageItems);
   const pageDocuments = categoryDocuments.slice(0, page * perPageItems);
 
