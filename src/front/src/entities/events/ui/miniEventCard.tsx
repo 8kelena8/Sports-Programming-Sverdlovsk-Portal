@@ -39,8 +39,8 @@ const MiniEventCard: React.FC<MiniEventCardProps> = ({ event }) => {
       </div>
 
       <div className="space-y-5 px-5">
-        <h2 className="font-bold text-xl">{event.title}</h2>
-        <p className=" line-clamp-4">{event.description}</p>
+        <h2 className="font-bold text-xl break-words">{event.title}</h2>
+        <p className=" line-clamp-4 break-words">{event.description}</p>
         <Link href={`/events/${event.id}`} className="block text-primary">
           Посмотреть
         </Link>

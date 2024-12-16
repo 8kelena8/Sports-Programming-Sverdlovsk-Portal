@@ -12,8 +12,8 @@ const DisciplineCard: React.FC<DisciplineCardProps> = ({ discipline }) => {
         <div className="rounded-full w-12 h-12 bg-primary" />
       </div>
       <div className="p-7 space-y-5">
-        <h3 className="font-bold text-lg">{discipline.name}</h3>
-        <p>{discipline.history}</p>
+        <h3 className="font-bold text-lg line-clamp-1">{discipline.name}</h3>
+        <p className="break-words line-clamp-5">{discipline.history}</p>
       </div>
     </div>
   );

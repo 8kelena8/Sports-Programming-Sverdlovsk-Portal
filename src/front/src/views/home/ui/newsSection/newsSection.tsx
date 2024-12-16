@@ -43,8 +43,8 @@ const NewsSection: React.FC<NewsSectionProps> = ({ news }) => {
         breakpoints={{ 991: { slidesPerView: 2 }, 1281: { slidesPerView: 3 } }}
         onSwiper={setSwiperRef}
       >
-        {news.map((n) => (
-          <SwiperSlide key={n.title}>
+        {news.slice(0, 9).map((n) => (
+          <SwiperSlide className="!h-auto" key={n.title}>
             <NewsCard news={n} />
           </SwiperSlide>
         ))}

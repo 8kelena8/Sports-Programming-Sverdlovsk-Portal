@@ -49,9 +49,13 @@ const EventCard: React.FC<EventCardProps> = ({ event }) => {
         )}
       </div>
 
-      <div className="lg:py-5 space-y-5 max-lg:px-5">
-        <h2 className="font-bold text-3xl max-lg:text-xl">{event.title}</h2>
-        <p className="lg:text-xl line-clamp-4">{event.description}</p>
+      <div className="lg:py-5 space-y-5 max-lg:px-5 overflow-auto">
+        <h2 className="font-bold text-3xl break-words max-lg:text-xl">
+          {event.title}
+        </h2>
+        <p className="lg:text-xl line-clamp-6 break-words">
+          {event.description}
+        </p>
         <Link
           href={`/events/${event.id}`}
           className="block text-primary lg:text-xl"

@@ -49,7 +49,7 @@ const NewsCarousel: React.FC<NewsCarouselProps> = ({ news }) => {
         ))}
       </Swiper>
       <div className="flex flex-col items-center text-center absolute gap-12 bottom-0 left-0 right-0 p-12 z-10">
-        <p className="font-bold text-4xl line-clamp-2 max-xl:text-xl">
+        <p className="font-bold text-4xl line-clamp-2 break-words max-xl:text-xl">
           {currentNews.summary}
         </p>
         <div className="flex items-center gap-2">
