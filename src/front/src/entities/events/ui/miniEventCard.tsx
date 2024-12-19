@@ -10,7 +10,7 @@ export interface MiniEventCardProps {
 
 const MiniEventCard: React.FC<MiniEventCardProps> = ({ event }) => {
   return (
-    <div className="bg-white text-black flex flex-col gap-5 pb-5 border w-fit border-primary">
+    <div className="bg-white text-black flex flex-col gap-5 pb-5 border w-fit border-primary w-full">
       <div className="flex flex-col gap-1 px-5">
         {event.startDate && (
           <div className="flex gap-1 items-center">
@@ -35,6 +35,9 @@ const MiniEventCard: React.FC<MiniEventCardProps> = ({ event }) => {
               <span>{getWeekDayString(event.endDate)}</span>
             </div>
           </div>
+        )}
+        {event.age && (
+          <span className="mt-auto">Для возраста: {event.age}</span>
         )}
       </div>
 

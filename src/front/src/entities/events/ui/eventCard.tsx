@@ -47,6 +47,9 @@ const EventCard: React.FC<EventCardProps> = ({ event }) => {
             </div>
           </div>
         )}
+        {event.age && (
+          <span className="mt-auto">Для возраста: {event.age}</span>
+        )}
       </div>
 
       <div className="lg:py-5 space-y-5 max-lg:px-5 overflow-auto">
