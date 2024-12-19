@@ -44,7 +44,7 @@ const NewsSection: React.FC<NewsSectionProps> = ({ news }) => {
         onSwiper={setSwiperRef}
       >
         {news.slice(0, 9).map((n) => (
-          <SwiperSlide className="!h-auto" key={n.title}>
+          <SwiperSlide className="!h-auto" key={n.id}>
             <NewsCard news={n} />
           </SwiperSlide>
         ))}

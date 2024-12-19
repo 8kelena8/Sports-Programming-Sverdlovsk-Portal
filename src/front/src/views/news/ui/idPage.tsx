@@ -30,7 +30,7 @@ const NewsIdPage: React.FC<NewsIdPageProps> = async ({ id }) => {
       <section className="bg-base-900 p-10 space-y-10 xl:min-w-[500px] h-fit max-xl:p-5">
         <h2 className="font-bold text-2xl max-xl:text-xl">Последние новости</h2>
         {lastNews.map((n) => (
-          <MiniNewsCard news={n} key={n.title} />
+          <MiniNewsCard news={n} key={n.id} />
         ))}
       </section>
     </div>

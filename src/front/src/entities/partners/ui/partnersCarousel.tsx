@@ -27,7 +27,7 @@ const PartnersCarousel: React.FC<PartnersCarouselProps> = ({ partners }) => {
         onSwiper={setSwiperRef}
       >
         {partners.map((p) => (
-          <SwiperSlide className="" key={p.name}>
+          <SwiperSlide className="" key={p.id}>
             <Image
               src={p.logo ?? "/img/placeholder.jpg"}
               alt={p.name}

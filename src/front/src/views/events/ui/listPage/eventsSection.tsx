@@ -24,7 +24,7 @@ const EventsSection: React.FC<EventsSectionProps> = ({ allEvents }) => {
     <section className="space-y-12">
       <main className="space-y-12">
         {pageEvents.map((e) => (
-          <EventCard event={e} key={e.title} />
+          <EventCard event={e} key={e.id} />
         ))}
       </main>
       {page < totalPages && (

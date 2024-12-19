@@ -22,7 +22,7 @@ const PartnersListPage: React.FC<PartnersListPageProps> = async ({}) => {
       <section className="container mx-auto my-12 space-y-8 px-5">
         <Separator />
         {partners
-          .map((p) => <PartnerCard key={p.name} partner={p} />)
+          .map((p) => <PartnerCard key={p.id} partner={p} />)
           .flatMap((v, i) => [v, <Separator key={`slash_${i}`} />])}
         <Button variant="primary" className="block mx-auto">
           Показать ещё

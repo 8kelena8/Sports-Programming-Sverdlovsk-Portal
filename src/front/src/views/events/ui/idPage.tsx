@@ -30,7 +30,7 @@ const EventsIdPage: React.FC<EventsIdPageProps> = async ({ id }) => {
       <section className="bg-base-900 p-10 space-y-10 xl:max-w-[500px] xl:min-w-[500px] h-fit max-xl:p-5">
         <h2 className="font-bold text-2xl max-xl:text-xl">Последние события</h2>
         {lastEvents.map((e) => (
-          <MiniEventCard event={e} key={e.title} />
+          <MiniEventCard event={e} key={e.id} />
         ))}
       </section>
     </div>

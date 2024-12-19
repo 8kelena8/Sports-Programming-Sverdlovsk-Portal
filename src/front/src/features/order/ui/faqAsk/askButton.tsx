@@ -16,7 +16,7 @@ export interface AskButtonProps {}
 const AskButton: React.FC<AskButtonProps> = ({}) => {
   return (
     <Dialog>
-      <DialogTrigger>
+      <DialogTrigger asChild>
         <Button variant="primary" className="xl:w-[400px] w-full h-16">
           Задавать вопросы
         </Button>

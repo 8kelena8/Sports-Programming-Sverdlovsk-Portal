@@ -24,7 +24,7 @@ const NewsSection: React.FC<NewsSectionProps> = ({ allNews }) => {
     <section className="space-y-12">
       <main className="grid gap-12 grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
         {pageNews.map((n) => (
-          <NewsCard news={n} className="mx-auto" key={n.title} />
+          <NewsCard news={n} className="mx-auto" key={n.id} />
         ))}
       </main>
       {page < totalPages && (
