@@ -1,18 +1,17 @@
 from rest_framework.response import Response
-from .models import Event, User, Calendar, Category, Contact, Discipline, Document, News, Partner
-from .serializers import EventSerializer, CalendarSerializer, CategorySerializer, ContactSerializer, DisciplineSerializer, DocumentSerializer, NewsSerializer, PartnerSerializer, UserSerializer
-from rest_framework import generics, status, permissions, views
+from .models import Event, Calendar, Category, Contact, Discipline, Document, News, Partner
+from .serializers import eMailSerializer, EventSerializer, CalendarSerializer, CategorySerializer, ContactSerializer, DisciplineSerializer, DocumentSerializer, NewsSerializer, PartnerSerializer, UserSerializer
+from rest_framework import generics, status
 from rest_framework.reverse import reverse 
 from rest_framework.permissions import AllowAny
 from rest_framework.views import APIView
-
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth.decorators import login_required
 from .forms import SignupForm
 from django.contrib.auth import logout
 from django.shortcuts import redirect
+from django.core.mail import send_mail
 
 
 def signup_view(request):
@@ -71,6 +70,7 @@ class ApiRoot(APIView):
             'document-list': reverse(DocumentListApiView.name, request=request),
             'news-list': reverse(NewsListApiView.name, request=request),
             'partner-list': reverse(PartnerListApiView.name, request=request),
+            'email-send': reverse(eMailView.name, request=request)
             })  
     
 class EventListApiView(generics.ListCreateAPIView): 
@@ -176,3 +176,33 @@ class NewsDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = News.objects.all() 
     serializer_class = NewsSerializer
     name = 'news-detail'
+
+
+class eMailView(APIView):
+    permission_classes = [AllowAny]
+    name = 'email-send'
+    def post(self, request):
+        serializer = eMailSerializer(data=request.data)
+        if serializer.is_valid():
+            # Extract validated data
+            email = serializer.validated_data['email']
+            subject = serializer.validated_data['subject']
+            message = serializer.validated_data['message']
+
+            # Compose the email content
+            full_message = f"Message from: {email}\n\n{message}"
+
+            # Send the email
+            try:
+                send_mail(
+                    subject=subject,
+                    message=full_message,
+                    from_email=email,  # Sender's email
+                    recipient_list=['sverdlovsk@fsp-russia.com'],  # Recipient's email
+                    fail_silently=False,
+                )
+                return Response({"message": "Your message has been sent successfully."}, status=status.HTTP_200_OK)
+            except Exception as e:
+                return Response({"error": f"Failed to send email. {str(e)}"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

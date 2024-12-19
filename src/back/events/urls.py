@@ -4,7 +4,7 @@ from .views import (
     EventListApiView, ApiRoot, CalendarListApiView, CategoryListApiView, ContactListApiView, 
     DisciplineListApiView, DocumentListApiView, NewsListApiView, PartnerListApiView, ApiRoot,
     EventDetail, CalendarDetail, CategoryDetail, ContactDetail, DisciplineDetail, DocumentDetail,
-    NewsDetail, PartnerDetail
+    NewsDetail, PartnerDetail, eMailView
 )
 
 urlpatterns = [
@@ -28,5 +28,7 @@ urlpatterns = [
     path('document-detail/<int:pk>/', DocumentDetail.as_view(), name='document-detail'),
     path('news-detail/<int:pk>/', NewsDetail.as_view(), name='news-detail'),
     path('partner-detail/<int:pk>/', PartnerDetail.as_view(), name='partner-detail'),
+
+    path('email-send/', eMailView.as_view(), name='email-send'),
 
 ]

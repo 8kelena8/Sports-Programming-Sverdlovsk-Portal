@@ -29,12 +29,12 @@ class DocumentSerializer(serializers.ModelSerializer):
 class EventSerializer(serializers.ModelSerializer):
     class Meta:
         model = Event
-        fields = ["title", "description", "start_date", "end_date", "location", "category", "discipline", "guest"]
+        fields = ["title", "description", "start_date", "end_date", "location", "category", "discipline", "guest", "age"]
 
 class NewsSerializer(serializers.ModelSerializer):
     class Meta:
         model = News
-        fields = ["title", "summary", "publication_date", "full_content"]      
+        fields = ["title", "summary", "publication_date", "full_content", "main_image"]      
 
 class PartnerSerializer(serializers.ModelSerializer):
     class Meta:
@@ -45,3 +45,10 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ["username", "email", "password", "role"]                                              
+
+from rest_framework import serializers
+
+class eMailSerializer(serializers.Serializer):
+    email = serializers.EmailField()
+    subject = serializers.CharField(max_length=100)
+    message = serializers.CharField()

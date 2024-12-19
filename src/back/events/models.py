@@ -41,6 +41,7 @@ class Event(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True)
     discipline = models.ForeignKey(Discipline, on_delete=models.CASCADE, null=True)
     guest = models.CharField(max_length=100, blank=True, null=True)
+    age = models.IntegerField(blank=True, null=True)
 
     def __str__(self):
         return self.title
@@ -72,6 +73,7 @@ class News(models.Model):
     summary = models.TextField(blank=True, null=True)
     publication_date = models.DateField()
     full_content = models.TextField(blank=True, null=True)
+    main_image = models.ImageField(upload_to='news/',blank=True, null=True)
 
     def __str__(self):
         return self.title

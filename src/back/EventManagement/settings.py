@@ -91,28 +91,28 @@ WSGI_APPLICATION = 'EventManagement.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 # Development environment database setting
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'eventmanagement',  # Your MySQL database name
-#         'USER': 'root',          # MySQL username
-#         'PASSWORD': 'tree123',  # MySQL password for eventuser
-#         'HOST': 'localhost',          # Hostname
-#         'PORT': '3306',               # MySQL default port
-#     }
-# }
-
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.getenv('MYSQL_DATABASE', 'eventmanagement'),
-        'USER': os.getenv('MYSQL_USER', 'root'),
-        'PASSWORD': os.getenv('MYSQL_PASSWORD', 'tree123'),
-        'HOST': os.getenv('MYSQL_HOST', 'db'),  # Service name in docker-compose
-        'PORT': os.getenv('MYSQL_PORT', '3306'),
+        'NAME': 'eventmanagement',  # Your MySQL database name
+        'USER': 'root',          # MySQL username
+        'PASSWORD': 'tree123',  # MySQL password for eventuser
+        'HOST': 'localhost',          # Hostname
+        'PORT': '3306',               # MySQL default port
     }
 }
+
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': os.getenv('MYSQL_DATABASE', 'eventmanagement'),
+#         'USER': os.getenv('MYSQL_USER', 'root'),
+#         'PASSWORD': os.getenv('MYSQL_PASSWORD', 'tree123'),
+#         'HOST': os.getenv('MYSQL_HOST', 'db'),  # Service name in docker-compose
+#         'PORT': os.getenv('MYSQL_PORT', '3306'),
+#     }
+# }
 
 
 # Password validation
@@ -175,11 +175,13 @@ REST_FRAMEWORK = {
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'your_smtp_server'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'your_email@example.com'
-EMAIL_HOST_PASSWORD = 'your_password'
+EMAIL_HOST = 'smtp.fsp-russia.com'  # Cambia esto según tu servidor SMTP
+EMAIL_PORT = 587  # O el puerto adecuado (465 para SSL, 587 para TLS)
+EMAIL_USE_TLS = True  # Cambia a False si usas SSL
+EMAIL_HOST_USER = 'sverdlovsk@fsp-russia.com'  # Correo desde el cual se enviarán los mensajes
+EMAIL_HOST_PASSWORD = 'tu_contraseña'  # Contraseña del correo
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
 
 # SECURE_SSL_REDIRECT = True
 # SESSION_COOKIE_SECURE = True
