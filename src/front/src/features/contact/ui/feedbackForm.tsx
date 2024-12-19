@@ -1,26 +1,21 @@
-"use client";
-
+import { sendFeedbackEmail } from "@/shared/api/server/actions";
 import { cn } from "@/shared/lib/utils";
 import { Button } from "@/shared/ui/button";
 import { Checkbox } from "@/shared/ui/checkbox";
-import React, { FormEvent } from "react";
+import React from "react";
 
 export interface FeedbackFormProps {
   className?: string;
 }
 
 const FeedbackForm: React.FC<FeedbackFormProps> = ({ className }) => {
-  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
-    console.log(e.currentTarget.elements);
-  };
-
   return (
     <div className={cn("space-y-5 flex flex-col justify-center", className)}>
       <div className="">
         <p className="text-2xl">Напишите нам</p>
         <p className="text-2xl">мы свяжемся с вами</p>
       </div>
-      <form onSubmit={onSubmit} className="space-y-5">
+      <form action={sendFeedbackEmail} className="space-y-5">
         <label htmlFor="feedbackEmail" className="block">
           <span>Email</span>
           <input
@@ -67,4 +62,4 @@ const FeedbackForm: React.FC<FeedbackFormProps> = ({ className }) => {
   );
 };
 
-export default React.memo(FeedbackForm);
+export default FeedbackForm;
