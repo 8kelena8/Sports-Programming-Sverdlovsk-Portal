@@ -25,6 +25,7 @@ const mapNews = (apiResult: NewsAPI): News => {
       ? new Date(apiResult.publication_date)
       : undefined,
     fullContent: apiResult.full_content,
+    mainImage: apiResult.main_image,
   };
 };
 
@@ -41,6 +42,7 @@ const mapEvent = (apiResult: EventAPI): Event => {
     categoryId: apiResult.category,
     disciplineId: apiResult.discipline,
     guestCount: apiResult.guest,
+    age: apiResult.age,
   };
 };
 

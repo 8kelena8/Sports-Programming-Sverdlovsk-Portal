@@ -4,6 +4,7 @@ export type NewsAPI = {
   summary?: string;
   publication_date?: string;
   full_content: string;
+  main_image: string;
 };
 
 export type News = {
@@ -12,4 +13,5 @@ export type News = {
   summary?: string;
   publicationDate?: Date;
   fullContent: string;
+  mainImage: string;
 };

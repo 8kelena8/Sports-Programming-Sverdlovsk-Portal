@@ -8,6 +8,7 @@ export type EventAPI = {
   category?: number;
   discipline?: number;
   guest?: number;
+  age?: number;
 };
 
 export type Event = {
@@ -20,4 +21,5 @@ export type Event = {
   categoryId?: number;
   disciplineId?: number;
   guestCount?: number;
+  age?: number;
 };
