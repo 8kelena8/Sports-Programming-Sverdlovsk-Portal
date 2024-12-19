@@ -35,3 +35,22 @@ export async function sendContactEmail(formData: FormData) {
 
   await serverEmailController.sendEmail(data);
 }
+
+export async function sendAskEmail(formData: FormData) {
+  const senderEmail = formData.get("contactEmail")!.toString();
+  const senderName = formData.get("name")!.toString();
+  const senderQuestion = formData.get("question")!.toString();
+
+  const message = `Был получен вопрос от ${senderName} (${senderEmail})
+
+Вопрос:
+${senderQuestion}`;
+
+  const data: SendEmailObject = {
+    email: process.env["SERVER_EMAIL"]!,
+    subject: "Вопрос на сайте",
+    message: message,
+  };
+
+  await serverEmailController.sendEmail(data);
+}

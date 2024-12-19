@@ -1,16 +1,13 @@
+import { sendAskEmail } from "@/shared/api/server/actions";
 import { Button } from "@/shared/ui/button";
 import { Checkbox } from "@/shared/ui/checkbox";
-import React, { FormEvent } from "react";
+import React from "react";
 
 export interface AskModalProps {}
 
 const AskForm: React.FC<AskModalProps> = ({}) => {
-  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
-    console.log(e.currentTarget.elements);
-  };
-
   return (
-    <form onSubmit={onSubmit} className="space-y-5">
+    <form action={sendAskEmail} className="space-y-5">
       <label htmlFor="faqAskEmail" className="block">
         <span>Email</span>
         <input
