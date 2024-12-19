@@ -17,7 +17,7 @@ const MiniNewsCard: React.FC<MiniNewsCardProps> = ({ news, className }) => {
     >
       <Image
         alt={news.title}
-        src={"/img/placeholder.jpg"}
+        src={news.mainImage ?? "/img/placeholder.jpg"}
         width={182}
         height={134}
         className="object-contain max-xl:w-36"

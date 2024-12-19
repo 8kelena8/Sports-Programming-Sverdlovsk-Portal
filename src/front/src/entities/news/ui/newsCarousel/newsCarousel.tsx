@@ -40,7 +40,7 @@ const NewsCarousel: React.FC<NewsCarouselProps> = ({ news }) => {
           <SwiperSlide key={n.id}>
             <Image
               alt={currentNews.title}
-              src={"/img/placeholder.jpg"}
+              src={currentNews.mainImage ?? "/img/placeholder.jpg"}
               fill
               sizes="(min-width: 960px) 50vw, 100vw"
               className="object-cover"

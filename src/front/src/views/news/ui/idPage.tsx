@@ -18,7 +18,7 @@ const NewsIdPage: React.FC<NewsIdPageProps> = async ({ id }) => {
         <div className="w-full">
           <Image
             alt={news.title}
-            src={"/img/placeholder.jpg"}
+            src={news.mainImage ?? "/img/placeholder.jpg"}
             width={984}
             height={700}
             className="aspect-square object-contain"

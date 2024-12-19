@@ -26,7 +26,7 @@ const NewsCard: React.FC<NewsCardProps> = ({ news, className }) => {
         })}
       </p>
       <Image
-        src={"/img/placeholder.jpg"}
+        src={news.mainImage ?? "/img/placeholder.jpg"}
         alt={news.title}
         width={445}
         height={380}
