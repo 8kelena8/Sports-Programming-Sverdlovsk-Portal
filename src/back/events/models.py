@@ -59,7 +59,7 @@ class Calendar(models.Model):
 class Contact(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     name = models.CharField(max_length=100)
-    email = models.EmailField()
+    email = models.EmailField(null=False, blank=False)
     subject = models.CharField(max_length=150, blank=True, null=True)
     message = models.TextField()
     submission_date = models.DateField()
