@@ -13,7 +13,13 @@ const getAllNews = async () => {
     }
   );
   const json: ListAPI<NewsAPI> = await response.json();
-  return json.map((p) => apiMapper.mapNews(p));
+  return json
+    .map((p) => apiMapper.mapNews(p))
+    .sort((a, b) =>
+      a.publicationDate != undefined && b.publicationDate != undefined
+        ? b.publicationDate.getTime() - a.publicationDate.getTime()
+        : 0
+    );
 };
 
 const getLastNews = async () => {
